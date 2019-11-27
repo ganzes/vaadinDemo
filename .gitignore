@@ -4,6 +4,8 @@ build/
 !gradle/wrapper/gradle-wrapper.jar
 **/out/
 **/build/
+**/target/
+**/node_modules/
 !**/src/main/**
 !**/src/test/**
 
