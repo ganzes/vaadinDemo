@@ -47,6 +47,14 @@ public class BookForm extends FormLayout {
         setBook(null);
     }
 
-    private void setBook(Object o) {
+    public void setBook(Book book) {
+        binder.setBean(book);
+
+        if (book == null) {
+            setVisible(false);
+        } else {
+            setVisible(true);
+            title.focus();
+        }
     }
 }
