@@ -5,12 +5,12 @@ public class Book {
     private String title;
     private String author;
     private String publicationYear;
-    private BookType type;
+    private String type;
 
     public Book() {
     }
 
-    public Book(String title, String author, String publicationYear, BookType type) {
+    public Book(String title, String author, String publicationYear, String type) {
         this.title = title;
         this.author = author;
         this.publicationYear = publicationYear;
@@ -29,7 +29,7 @@ public class Book {
         return publicationYear;
     }
 
-    public BookType getType() {
+    public String getType() {
         return type;
     }
 
@@ -68,7 +68,7 @@ public class Book {
         this.publicationYear = publicationYear;
     }
 
-    public void setType(BookType type) {
+    public void setType(String type) {
         this.type = type;
     }
 }
