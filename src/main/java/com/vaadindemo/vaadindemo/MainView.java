@@ -1,8 +1,10 @@
 package com.vaadindemo.vaadindemo;
 
 import com.kodilla.books.domain.Book;
+import com.kodilla.books.domain.BookForm;
 import com.kodilla.books.domain.BookService;
 import com.vaadin.flow.component.grid.Grid;
+import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.value.ValueChangeMode;
@@ -14,20 +16,22 @@ public class MainView extends VerticalLayout {
     private BookService bookService = BookService.getInstance();
     private Grid<Book> grid = new Grid<>(Book.class);
     private TextField filter = new TextField();
+    private BookForm form = new BookForm(this);
 
 
     public MainView() {
-        grid.setColumns("title", "author", "publicationYear", "type");
-        add(grid);
-        setSizeFull();
-        refresh();
-
-        filter.setPlaceholder("Filter by title");
+        filter.setPlaceholder("Filter by title...");
         filter.setClearButtonVisible(true);
         filter.setValueChangeMode(ValueChangeMode.EAGER);
-        filter.addValueChangeListener(event -> update());
-        add(filter,grid);
+        filter.addValueChangeListener(e -> update());
+        grid.setColumns("title", "author", "publicationYear", "type");
+        HorizontalLayout mainContent = new HorizontalLayout(grid, form);
+        mainContent.setSizeFull();
+        grid.setSizeFull();
 
+        add(filter, mainContent);
+        setSizeFull();
+        refresh();
     }
 
     public void refresh(){
