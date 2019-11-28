@@ -2,6 +2,7 @@ package com.kodilla.books.domain;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class BookService {
 
@@ -38,4 +39,11 @@ public class BookService {
         books.add(new Book("Watch Us Rise", "Renée Watson,  Ellen Hagan", "2019", "BookType.POETRY"));
         return books;
     }
+
+    public Set<Book> findByTitle(String title){
+        return books.stream()
+                .filter(book -> book.getTitle().contains(title))
+                .collect(Collectors.toSet());
+    }
+
 }
